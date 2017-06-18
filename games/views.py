@@ -8,7 +8,6 @@ from django.views.generic import View
 from .forms import UserForm
 from django.http import HttpResponseRedirect
 from django.contrib import auth
-from django.core.context_processors import csrf
 from django.contrib.auth import logout
 
 
@@ -65,28 +64,32 @@ class UserFormView(View):
 
 def login(request):
     c={}
-    c.update(csrf(request))
+    c.update(request)
     return render_to_response('login.html',c)
 
 def auth_view(request):
-    username=request.POST.get('username','')
-    password=request.POST.get('password','')
-    user = auth.authenticate(username=username,password=password)
-    if user is not None:
-        auth.login(request,user)
-        return HttpResponseRedirect('/games/loggedin')
-    else:
-        return HttpResponseRedirect('games/invalid')
-
+    pass
+#     username=request.POST.get('username','')
+#     password=request.POST.get('password','')
+#     user = auth.authenticate(username=username,password=password)
+#     if user is not None:
+#         auth.login(request,user)
+#         return HttpResponseRedirect('/games/loggedin')
+#     else:
+#         return HttpResponseRedirect('games/invalid')
+#
 def loggedin(request):
-    return render_to_response('loggedin.html',{'full_name': request.user.username})
-
+    pass
+#     return render_to_response('loggedin.html',{'full_name': request.user.username})
+#
 def invalid_login(request):
-    return render_to_response('invalid_login.html')
-
+    pass
+#     return render_to_response('invalid_login.html')
+#
 def logout(request):
-    auth.logout(request)
-    return render_to_response('logout.html')
-
-
-
+    pass
+#     auth.logout(request)
+#     return render_to_response('logout.html')
+#
+#
+#
