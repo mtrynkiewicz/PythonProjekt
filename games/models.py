@@ -5,7 +5,7 @@ class PaczkaGier(models.Model):
     kreator_paczki = models.CharField(max_length=250)
     nazwa_paczki = models.CharField(max_length=100)
     rodzaj_gier = models.CharField(max_length=100)
-    logo_paczki = models.CharField(max_length=1000)
+    logo_paczki = models.FileField()
 
     def get_absolute_url(self):
         return reverse('games:detail',kwargs = {'pk':self.pk} )
