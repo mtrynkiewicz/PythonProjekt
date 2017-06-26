@@ -1,5 +1,5 @@
 from django.views import generic
-from .models import PaczkaGier
+from .models import PaczkaGier,Gra
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.shortcuts import render,redirect,render_to_response
@@ -23,6 +23,7 @@ class DetailView(generic.DetailView):
     model=PaczkaGier
     context_object_name = 'paczka'
     template_name = 'games/detail.html'
+    
 
 
 class PaczkaCreate(CreateView):
@@ -36,6 +37,11 @@ class PaczkaUpdate(UpdateView):
 class PaczkaDelete(DeleteView):
     model=PaczkaGier
     success_url = reverse_lazy('games:index')
+
+class GraCreate(CreateView):
+    model= Gra
+    fields = [ 'paczka','link_do_pobierania', 'nazwa_gry' , 'jest_ulubiona']
+
 
 class UserFormView(View):
     form_class = UserForm
@@ -94,6 +100,9 @@ def invalid_login(request):
 def logout(request):
     auth.logout(request)
     return render_to_response('logout.html')
+
+def gra_add(request):
+    return render(request,'games/gra_add')
 
 
 

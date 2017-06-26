@@ -12,6 +12,7 @@ urlpatterns = [
 
     #add
     url(r'paczka/add/$',views.PaczkaCreate.as_view(),name='paczka-add'),
+    url(r'paczka/gra/$', views.GraCreate.as_view(), name='gra-add'),
     #update
     url(r'paczka/(?P<pk>[0-9]+)/$',views.PaczkaUpdate.as_view(),name='paczka-update'),
     #delete
@@ -22,9 +23,6 @@ urlpatterns = [
     url(r'^logout/$',views.logout,name='logout'),
     url(r'^loggedin/$',views.loggedin,name='loggedin'),
     url(r'^invalid_login/$',views.invalid_login,name='invalid_login'),
-
-
-
-
+    url(r'^gra_add/$', views.gra_add, name='gra_add'),
 
 ]

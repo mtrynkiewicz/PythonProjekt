@@ -22,9 +22,9 @@
 
             <div class="col-sm-8 col-md-9">
 
-                    <ul class="nav nav-pills" style="margin-bottom: 10px;">
-                        <li role="presentation"><a href="#">Add New Game</a></li>
-                    </ul>
+                        <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                            <li role="presentation"><a href="{% url 'games:gra-add' %} ">Add New Game</a></li>
+                        </ul>
 
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -59,6 +59,7 @@
                                             <a href="#" class="btn-favorite"><span class="glyphicon glyphicon-star {% if giera.is_favorite %}active{% endif %}"></span></a>
                                         </td>
                                         <td>
+
                                             <form action="#" method="post" style="display: inline;">
                                                 {% csrf_token %}
                                                 <input type="hidden" name="giera_id" value="{{ giera.id }}" />
