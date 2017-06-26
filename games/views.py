@@ -6,7 +6,7 @@ from django.shortcuts import render,redirect,render_to_response
 from django.contrib.auth import authenticate,login
 from django.views.generic import View
 from .forms import UserForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib import auth
 from django.contrib.auth import logout
 
@@ -63,33 +63,37 @@ class UserFormView(View):
         return render(request,self.template_name, {'form':form})
 
 def login(request):
-    c={}
-    c.update(request)
-    return render_to_response('login.html',c)
+    # c={}
+    # c.update(request)
+    return render(request,'games/login.html')
 
-def auth_view(request):
-    pass
-#     username=request.POST.get('username','')
-#     password=request.POST.get('password','')
-#     user = auth.authenticate(username=username,password=password)
-#     if user is not None:
-#         auth.login(request,user)
-#         return HttpResponseRedirect('/games/loggedin')
-#     else:
-#         return HttpResponseRedirect('games/invalid')
-#
+
+def auth(request):
+
+    # return render(request,'games/auth.html')
+     username=request.POST.get('username','')
+     password=request.POST.get('password','')
+     dupa=authenticate(username=username,password=password)
+     # user = auth.authenticate(username=username,password=password)
+     if dupa is not None:
+         login(request)
+        # login(request,dupa,None)
+         # login(request,dupa)
+         #return HttpResponseRedirect('/games/logout')
+         return render(request,'games/loggedin.html')
+     else:
+         return render(request,'games/logout.html')
+
 def loggedin(request):
-    pass
-#     return render_to_response('loggedin.html',{'full_name': request.user.username})
-#
+    return render_to_response('loggedin.html',{'full_name': request.user.username})
+
 def invalid_login(request):
-    pass
-#     return render_to_response('invalid_login.html')
-#
+
+    return render_to_response('invalid_login.html')
+
 def logout(request):
-    pass
-#     auth.logout(request)
-#     return render_to_response('logout.html')
-#
-#
-#
+    auth.logout(request)
+    return render_to_response('logout.html')
+
+
+

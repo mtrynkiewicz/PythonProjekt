@@ -6,11 +6,15 @@
     {% if form.errors %}
         <p class ="error">Sorry </p>
     {% endif %}
-    <form action="/games/auth" method="post">{% csrf_token %}
-        <label for="username">User name: </label>
+    <form action="{% url 'games:auth' %}" method="post" >{% csrf_token %}
+        <label for="username"><h3>Nazwa Użytkownika: </h3> </label>
         <input type="text" name="username" value="" id="username">
-        <label for ="password">Password:</label>
+        <br>
+        <label for ="password"><h3>Hasło:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </h3></label>
         <input type ="password" name="password" value="" id ="password">
-        <input type="submit" value="login">
+        <br>
+        <input type="submit"   value="log me in ">
+
+        <!--<input type="reset"   value="log me out">-->
     </form>
 {% endblock %}
