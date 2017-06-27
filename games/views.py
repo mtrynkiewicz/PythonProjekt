@@ -23,7 +23,7 @@ class DetailView(generic.DetailView):
     model=PaczkaGier
     context_object_name = 'paczka'
     template_name = 'games/detail.html'
-    
+
 
 
 class PaczkaCreate(CreateView):
@@ -79,9 +79,9 @@ def auth(request):
     # return render(request,'games/auth.html')
      username=request.POST.get('username','')
      password=request.POST.get('password','')
-     dupa=authenticate(username=username,password=password)
+     uzytkownik=authenticate(username=username,password=password)
      # user = auth.authenticate(username=username,password=password)
-     if dupa is not None:
+     if uzytkownik is not None:
          login(request)
         # login(request,dupa,None)
          # login(request,dupa)
